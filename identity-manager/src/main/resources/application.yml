@@ -1,0 +1,15 @@
+amazon:
+  region: us-west-2
+  dynamodb:
+    endpoint: http://localhost:4569/
+
+dynamodb:
+  table:
+    create:
+      enabled: true
+    rcu: 3
+    wcu: 3
+logging:
+  level:
+    root: warn
+    com.bwg.app: debug
