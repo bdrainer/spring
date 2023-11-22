@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = ContactProfile.class, name = "CONTACT"),
         @JsonSubTypes.Type(value = AddressProfile.class, name = "ADDRESS"),
-        @JsonSubTypes.Type(value = GamerProfile.class, name = "GAMER")
+        @JsonSubTypes.Type(value = EmploymentProfile.class, name = "EMPLOYMENT")
 })
 @Getter
 @SuperBuilder

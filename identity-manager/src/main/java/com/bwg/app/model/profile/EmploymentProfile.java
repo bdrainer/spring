@@ -5,20 +5,24 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
+import java.time.LocalTime;
+
 @Value
 @Jacksonized
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class GamerProfile extends Profile {
+public class EmploymentProfile extends Profile {
 
-    String tag;
+    String company;
 
-    String system;
+    String title;
 
-    String credits;
+    String start;
+
+    String end;
 
     @Override
     public ProfileType type() {
-        return ProfileType.GAMER;
+        return ProfileType.EMPLOYMENT;
     }
 }
