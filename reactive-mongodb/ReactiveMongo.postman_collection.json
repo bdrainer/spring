@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "dca97146-4f65-463a-ae3d-f449ec2fd041",
+		"name": "ReactiveMongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "970459"
+	},
+	"item": [
+		{
+			"name": "Get Primary Contact",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan/contact/primary",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan",
+						"contact",
+						"primary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Primary Contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"CONTACT\",\n    \"userkey\" : \"primary\",\n    \"firstname\" : \"Hal\",\n    \"lastname\" : \"Joran\",\n    \"email\" : \"haljordan@gmail.com\",\n    \"phone\" : \"800-555-1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Hero Contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"CONTACT\",\n    \"userkey\" : \"hero\",\n    \"firstname\" : \"Green\",\n    \"lastname\" : \"Lantern\",\n    \"email\" : \"greenlantern@justicleague.com\",\n    \"phone\" : \"800-555-HERO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Home Address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan/address/home",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan",
+						"address",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Home Address",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"ADDRESS\",\n    \"userkey\" : \"home\",\n    \"line1\" : \"1234 Main Street\",\n    \"city\" : \"Coast City`\",\n    \"state\" : \"CA\",\n    \"postalCode\" : \"00000\",\n    \"current\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Justice League Employment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan/employment/justiceleague",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan",
+						"employment",
+						"justiceleague"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Justice League Employment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"EMPLOYMENT\",\n    \"userkey\" : \"justiceleague\",\n    \"title\" : \"Hero\",\n    \"start\" : \"07/1940\",\n    \"end\" : \"present\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Justice League Employment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan/contact/primary",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan",
+						"contact",
+						"primary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get HalJordan Contact Profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan/contact",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get HalJordan Profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/profiles/haljordan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profiles",
+						"haljordan"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
