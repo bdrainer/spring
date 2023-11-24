@@ -1,4 +1,4 @@
-package org.bwg.rxmongodb;
+package org.bwg.rxmongodb.application;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,6 @@ public class Java21Tests {
         long start = System.currentTimeMillis();
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             IntStream.range(0, 10_000).forEach(i -> executor.submit(() -> {
-                System.out.println("Thread " + i + " sleeping for 1 second");
                 Thread.sleep(Duration.ofSeconds(1));
                 return i;
             }));

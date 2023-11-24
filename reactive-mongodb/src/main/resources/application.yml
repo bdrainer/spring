@@ -2,12 +2,12 @@ app:
   repository:
     provider: mongodb
 
-spring:
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: rxmongodb
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: test
 
 logging:
   level:
