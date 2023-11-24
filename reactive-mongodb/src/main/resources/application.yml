@@ -1,9 +1,15 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
 app:
   repository:
     provider: mongodb
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: rxmongodb
+
+logging:
+  level:
+    root: info
+    org.bwg.rxmongodb: debug

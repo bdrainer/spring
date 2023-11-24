@@ -6,9 +6,11 @@ import org.bwg.rxmongodb.adapter.repository.mongo.repository.MongoDbProfileReact
 import org.bwg.rxmongodb.adapter.repository.mongo.repository.entity.EntityMapper;
 import org.bwg.rxmongodb.adapter.repository.mongo.repository.entity.ProfileEntity;
 import org.bwg.rxmongodb.adapter.repository.mongo.repository.entity.ProfileId;
+import org.bwg.rxmongodb.model.exception.RecordNotFoundException;
 import org.bwg.rxmongodb.model.profile.Profile;
 import org.bwg.rxmongodb.model.profile.ProfileType;
 import org.bwg.rxmongodb.port.ProfileRepository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
@@ -30,6 +32,19 @@ public class MongoDbProfileRepository implements ProfileRepository {
     @Override
     public Mono<Profile> findByUniqueKey(String username, ProfileType type, String userkey) {
         return repository.findById(ProfileId.toId(username, type, userkey))
-                .map(e -> EntityMapper.toProfile(objectMapper, e.getProfile()));
+                .map(entity -> EntityMapper.toProfile(objectMapper, entity.getProfile()))
+                .switchIfEmpty(Mono.error(new RecordNotFoundException("Profile not found")));
+    }
+
+    @Override
+    public Flux<Profile> findByUsername(String username) {
+        return repository.findByUsername(username.toUpperCase())
+                .map(entity -> EntityMapper.toProfile(objectMapper, entity.getProfile()));
+    }
+
+    @Override
+    public Flux<Profile> findByUsernameAndType(String username, ProfileType type) {
+        return repository.findByUsernameAndType(username.toUpperCase(), type.name())
+                .map(entity -> EntityMapper.toProfile(objectMapper, entity.getProfile()));
     }
 }

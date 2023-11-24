@@ -11,26 +11,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/accounts")
+@RequestMapping("/profiles")
 public class ApplicationProfileController {
 
     private final ProfileRepository repository;
 
-    @PutMapping("/{username}/profiles")
+    @PutMapping("/{username}")
     public Mono<Profile> update(@PathVariable String username, @RequestBody Profile payload) {
-        log.info("Update profile for {}", username);
+        log.debug("Update profile for {}", username);
         return repository.save(username, payload);
     }
 
-    @GetMapping("/{username}/profiles/{type}/{userkey}")
+    @GetMapping("/{username}/{type}/{userkey}")
     public Mono<Profile> getProfileByUniqueKey(@PathVariable String username, @PathVariable String type, @PathVariable String userkey) {
-        log.info("Get profile {}, {}, {}", username, type, userkey);
+        log.debug("Get profile {}, {}, {}", username, type, userkey);
         return repository.findByUniqueKey(username, ProfileType.valueOf(type.toUpperCase()), userkey);
+    }
+
+    @GetMapping("/{username}")
+    public Flux<Profile> getProfileByUsername(@PathVariable String username) {
+        log.debug("Get profiles for user {}", username);
+        return repository.findByUsername(username);
+    }
+
+    @GetMapping("/{username}/{type}")
+    public Flux<Profile> getProfileByUsernameAndType(@PathVariable String username, @PathVariable String type) {
+        log.debug("Get profiles {} for user {}", type, username);
+        return repository.findByUsernameAndType(username, ProfileType.valueOf(type.toUpperCase()));
     }
 
 }
