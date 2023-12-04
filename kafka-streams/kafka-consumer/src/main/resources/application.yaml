@@ -1,0 +1,19 @@
+spring.cloud.stream:
+  function:
+    definition: squaredNumberConsumer
+  bindings:
+    squaredNumberConsumer-in-0:
+      destination: squaredNumbers
+  kafka:
+    binder:
+      brokers:
+        - localhost:9092
+
+kafka:
+  bootstrapAddress: localhost:9092
+  topic:
+    numbersName: numbers
+    hypnotikName: hypnotik
+
+server:
+  port: 8081
