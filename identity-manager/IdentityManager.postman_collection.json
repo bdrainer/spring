@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "de3c53a9-c42f-4462-9ff4-f0860590cbc9",
+		"name": "DynamoDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "970459"
+	},
+	"item": [
+		{
+			"name": "Get account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update account",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"PREMIUM\",\n    \"status\": \"LOCKED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get primary contact",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/contact/primary",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"contact",
+						"primary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create primary contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"CONTACT\",\n    \"userkey\" : \"primary\",\n    \"firstname\" : \"John\",\n    \"lastname\" : \"Doe\",\n    \"email\" : \"johndoe@gmail.com\",\n    \"phone\" : \"800-555-1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update primary contact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"CONTACT\",\n    \"userkey\": \"PRIMARY\",\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"phone\": \"800-555-9876\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/contact",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get primary address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/address/primary",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"address",
+						"primary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create primary address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"ADDRESS\",\n    \"userkey\" : \"primary\",\n    \"line1\" : \"123 Main Street\",\n    \"city\" : \"Louisville\",\n    \"state\" : \"KY\",\n    \"postalCode\" : \"40291\",\n    \"current\" : false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update primary address",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"ADDRESS\",\n    \"userkey\" : \"primary\",\n    \"line1\" : \"123 Main Street\",\n    \"city\" : \"San Diego\",\n    \"state\" : \"CA\",\n    \"postalCode\" : \"92129\",\n    \"current\" : false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all account addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/address",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accenture employment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/employment/accenture",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"employment",
+						"accenture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Accenture employment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"EMPLOYMENT\",\n    \"userkey\": \"ACCENTURE\",\n    \"company\" : \"Accenture\",\n    \"title\" : \"Platform Engineer\",\n    \"start\" : \"01/2021\",\n    \"end\" : \"08/2022\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Accenture employment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\" : \"EMPLOYMENT\",\n    \"userkey\": \"ACCENTURE\",\n    \"company\" : \"Accenture\",\n    \"title\" : \"Senior Platform Engineer\",\n    \"start\" : \"01/2021\",\n    \"end\" : \"08/2022\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all account employments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/johndoe/profiles/employment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"johndoe",
+						"profiles",
+						"employment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

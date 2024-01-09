@@ -4,6 +4,37 @@ A Spring Boot project using DynamoDB.  A goal of mine is to explore and understa
 
 A good article on the subject is [The What, Why, and When of Single-Table Design with DynamoDB](https://www.alexdebrie.com/posts/dynamodb-single-table/)
 
+
+## Java 17 and Amazon Corretto
+
+The project is using Java 17.  I am using JDK `17.0.9-amzn` running on a Mac.
+
+I use [SDKMan](https://sdkman.io/) to install and manage Java versions:  `sdk install java 17.0.9-amzn`.
+
+## DynamoDB
+
+The `docker-compose.yml`, in the project root, can be used to start DynamoDB.
+
+The application connects to DynamoDB on the endpoint http://localhost:4569/
+
+See `src/main/resources/application.yml` for the local configuration.
+
+## Run Local
+
+1. Start DynamoDB using the docker-compose.yml.  In the root of the project open a terminal and run `docker-compose up -d`
+2. Start the application.  In the root of the project open a terminal and run `./gradlew bootRun`
+
+## Test Local
+
+There is `IdentityManager.postman_collection.json` that can be used for making requests into the application.
+
+First you must create an account.  The Postman uses account `johndoe`.
+
+1. Run `POST Create account`
+2. Run `GET Get account`
+
+Once an account is created you can try any of the profile related requests.
+
 ## Single Table Design
 
 Below are some thoughts on single-table-design.
@@ -22,19 +53,28 @@ The Profile object has:
 * PK in the form `PROFILE#<unique-identifier>`, the unique-identifier is the same value as the one set for the associated account.
 * SK in the form `PROFILE#<TYPE>#<userkey>` where TYPE is the profile type and userkey ia a unique value the user sets.
 
-I realize now the Profile PK might be better if it was the same PK as Account, i.e. `ACCOUNT#<unique-identifier>`
+I realize now the Profile PK is better if it was the same PK as Account, i.e. `ACCOUNT#<unique-identifier>`.  There is
+no need to repeat "PROFILE".  Instead use the PK prefix 'ACCOUNT'.
 
-**TODO**: Change the PK on Profile to match Account.  The single table is an account table holding data related to the account.
-Profiles are related to the account and profiles come in different types.  The `userkey` is a way for the user to distinguis
-and have more the one profile of the same type.  One example is address where a user could have a home address, a billing
-address, a postal box address, etc.
+**TODO**: Change the PK on Profile to match Account.
+
+The single table design is really just an account table holding data related to the account. Profiles are related to the
+account and profiles come in different types.  
+
+The `userkey` is a way for the user to distinguish and have more the one profile of the same type.  One example is 
+address where a user could have a home address, a billing address, a postal box address, etc.  Another example is 
+the employment profile type.  `userkey` is how you can name the different employments where it could be the name of each
+employer.  
 
 ### Access Patterns
 
 The idea of storing any data structure in the table is interesting, but it comes down to how will the application
 access that data.  In my case, I'm storing accounts and profiles.  The app looks up profiles where profiles
-must belong to an account.  The single-table is really an account profiles table but could be extended.  The account 
-could have a new type for example Pet.  The PK is the same as for Account but the SK is `PET#<TYPE>#userkey`.
+must belong to an account.  
+
+More account related data could be associated to the account.  The PK would remain `ACCOUNT#unique-identifier` and the
+SK could be anything.  If we wanted to store a user's pets it could become a new profile type `PROFILE#PET#userkey`.  Or
+it could become its own object, independent of Profile, in which case the SK might look like `PET#<TYPE>#userkey`.
 
 **Queries**
 1. Get account by username.
